@@ -1,0 +1,18 @@
+# Example Suricata YAML rules for signature-based detection
+
+- suricata:
+    - match:
+        http.request.uri: "/admin.php"
+      sid: 100001
+      severity: critical
+      msg: "Admin panel access detected"
+    - match:
+        http.request.uri: "/shell.php"
+      sid: 100002
+      severity: high
+      msg: "Shell access detected"
+    - match:
+        tls.sni: "example.com"
+      sid: 100003
+      severity: medium
+      msg: "TLS handshake to example.com"

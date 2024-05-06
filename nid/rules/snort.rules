@@ -1,0 +1,26 @@
+# Rule to detect SSH brute force attacks
+alert tcp $EXTERNAL_NET any -> $SSH_SERVERS $SSH_PORTS (msg:"SSH Brute Force Attack"; flow:to_server,established; content:"SSH-"; depth:4; threshold: type threshold, track by_src, count 5, seconds 60; sid:100004;)
+
+# Rule to detect HTTP SQL injection attempts
+alert tcp $EXTERNAL_NET $HTTP_PORTS -> $SQL_SERVERS any (msg:"HTTP SQL Injection Attempt"; flow:to_server,established; content:"SELECT"; nocase; http_uri; pcre:"/SELECT.*FROM\s+[^;]*(;|'|"|\)|\s+AND\s+|-\-)/i"; sid:100005;)
+
+# Rule to detect DNS tunneling
+alert udp $HOME_NET any -> $EXTERNAL_NET 53 (msg:"DNS Tunneling Detected"; content:"|00|"; content:"|01|"; distance:0; sid:100006;)
+
+# Rule to detect ARP spoofing attacks
+alert arp $HOME_NET any -> $EXTERNAL_NET any (msg:"ARP Spoofing Detected"; opcode:2; threshold: type threshold, track by_dst, count 5, seconds 60; sid:100007;)
+
+# Rule to detect RDP brute force attacks
+alert tcp $EXTERNAL_NET any -> $RDP_SERVERS $RDP_PORTS (msg:"RDP Brute Force Attack"; flow:to_server,established; content:"MS_T120"; depth:7; threshold: type threshold, track by_src, count 5, seconds 60; sid:100008;)
+
+# Rule to detect SMB brute force attacks
+alert tcp $EXTERNAL_NET any -> $SMB_SERVERS $SMB_PORTS (msg:"SMB Brute Force Attack"; flow:to_server,established; content:"SMB"; depth:3; threshold: type threshold, track by_src, count 5, seconds 60; sid:100009;)
+
+# Rule to detect HTTP request smuggling
+alert tcp $EXTERNAL_NET $HTTP_PORTS -> $HOME_NET any (msg:"HTTP Request Smuggling Detected"; flow:to_server,established; content:"Transfer-Encoding"; nocase; content:"Content-Length"; nocase; sid:100010;)
+
+# Rule to detect ICMP flood attacks
+alert icmp $EXTERNAL_NET any -> $HOME_NET any (msg:"ICMP Flood Attack Detected"; threshold: type threshold, track by_src, count 100, seconds 5; sid:100011;)
+
+# Rule to detect DHCP rogue server activity
+alert udp $EXTERNAL_NET 68 -> $HOME_NET 67 (msg:"DHCP Rogue Server Activity Detected"; content:"|35|"; depth:1; sid:100012;)

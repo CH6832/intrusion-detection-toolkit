@@ -1,0 +1,41 @@
+# macOS Rules for Host-based Intrusion Detection
+
+# Rule to detect unauthorized process execution
+RULE Unauthorized_Process_Execution
+    PROCESS_START /usr/bin/python
+    ACTION alert
+
+# Rule to detect file modifications in critical directories
+RULE File_Modification
+    FILE_MODIFY path /Library/
+    ACTION alert
+
+# Rule to detect privilege escalation attempts
+RULE Privilege_Escalation
+    PRIVILEGE_ESCALATION
+    ACTION alert
+
+# Rule to detect suspicious network connections
+RULE Suspicious_Network_Connection
+    NETWORK_CONNECT src_ip != trusted_ip_range
+    ACTION alert
+
+# Rule to detect abnormal macOS syscall usage
+RULE Abnormal_macOS_Syscall_Usage
+    MACOS_SYSCALL not in whitelist
+    ACTION alert
+
+# Rule to detect suspicious user login activity
+RULE Suspicious_User_Login_Activity
+    USER_LOGIN user != root
+    ACTION alert
+
+# Rule to detect suspicious application activity
+RULE Suspicious_Application_Activity
+    APPLICATION_ACTIVITY user != root
+    ACTION alert
+
+# Rule to detect unauthorized launch daemon creation
+RULE Unauthorized_Launch_Daemon_Creation
+    LAUNCH_DAEMON_CREATE user != root
+    ACTION alert
