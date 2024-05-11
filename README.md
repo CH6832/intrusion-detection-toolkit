@@ -1,8 +1,6 @@
 # Intrusion Detection Toolkit
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-
-## Overview
+## :newspaper: About the project
 
 The Intrusion Detection Toolkit is a collection of tools and resources for implementing Network-based Intrusion Detection (NID) and Host-based Intrusion Detection (HID) systems. This repository provides scripts, configurations, rules, and documentation to help you set up and deploy intrusion detection systems in your environment.
 
@@ -10,20 +8,36 @@ The Intrusion Detection Toolkit is a collection of tools and resources for imple
 
 - **NID**: Contains scripts and rules for Network-based Intrusion Detection systems.
 - **HID**: Includes scripts and configurations for Host-based Intrusion Detection systems.
-- **Examples**: Provides example configurations and use cases for NID and HID.
 - **Documentation**: Offers detailed documentation and guides for setting up and configuring intrusion detection systems.
 
-## Getting Started
+## :runner: Getting started
 
 1. Clone this repository to your local machine.
 2. Explore the `nid/` and `hid/` directories for scripts, rules, and configurations.
-3. Check out the `examples/` directory for example configurations and use cases.
-4. Refer to the documentation for detailed setup instructions and usage guidelines.
+3. Refer to the `README.md` files for detailed setup instructions and usage guidelines.
 
-## Contributing
+## :books: Resources used to create this project
 
-Contributions are welcome! If you have improvements, bug fixes, or new features to contribute, please submit a pull request. For major changes, please open an issue first to discuss potential updates.
+* Python
+  * [Python 3.12 documentation](https://docs.python.org/3/)
+  * [Built-in Functions](https://docs.python.org/3/library/functions.html)
+  * [Python Module Index](https://docs.python.org/3/py-modindex.html)
+* Editor
+  * [Visual Studio Code](https://code.visualstudio.com/)
+* Markdwon
+  * [Basic syntax](https://www.markdownguide.org/basic-syntax/)
+  * [Complete list of github markdown emofis](https://dev.to/nikolab/complete-list-of-github-markdown-emoji-markup-5aia)
+  * [Awesome template](http://github.com/Human-Activity-Recognition/blob/main/README.md)
+  * [.gitignore file](https://git-scm.com/docs/gitignore)
 
-## License
+## :bookmark: License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the terms of the [MIT License](LICENSE).
+
+## COPYRIGHT
+
+See the [COPYRIGHT](COPYRIGHT) file for copyright and licensing details.
+
+## Code of Conduct
+
+Please review our [Code of Conduct](CODE_OF_CONDUCT.md) before contributing to this project.
